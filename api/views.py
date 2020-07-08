@@ -6,7 +6,7 @@ from rest_framework.viewsets import GenericViewSet, ModelViewSet
 from django.shortcuts import get_object_or_404
 
 from .models import Comment, Follow, Group, Post, User
-from .permissions import IsAlredyFollow, IsOwnerPermission
+from .permissions import IsOwnerPermission
 from .serializers import (
     CommentSerializer, FollowSerializer,
     GroupSerializer, PostSerializer
@@ -51,7 +51,6 @@ class FollowViewSet(CreateModelMixin, ListModelMixin,
     permission_classes = (
         IsAuthenticatedOrReadOnly, 
         IsOwnerPermission,
-        IsAlredyFollow
     )
     filter_backends = (SearchFilter, )
     search_fields = ['=user__username', '=following__username']
@@ -66,6 +65,4 @@ class GroupViewSet(CreateModelMixin, ListModelMixin,
     GenericViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-    permission_classes = (
-        IsAuthenticatedOrReadOnly,
-    )
+    permission_classes = (IsAuthenticatedOrReadOnly, )
