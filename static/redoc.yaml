@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  title: 'Yatube API'
+  title: 'API'
   version: ''
   description: API начинается с /api/v1/
 

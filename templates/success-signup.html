@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block style %}
+    a {
+        font-size: 30px;
+    }
+{% endblock %}
+
+{% block content %}
+    <h1>
+        Поздравляем, вы успешно прошли регистрацию и теперь имеете доступ к API проекта Yatube
+    </h1>
+
+    <p>
+        <a href="{% url 'signup' %}">На страницу регистрации</a>
+    </p>
+    <a href="{% url 'redoc' %}">Документация</a>
+{% endblock %}

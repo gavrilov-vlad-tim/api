@@ -20,7 +20,6 @@ class PostViewSet(ModelViewSet):
         IsAuthenticatedOrReadOnly,
         IsOwnerPermission 
     )
-
     filterset_fields = ('group', ) 
 
     def perform_create(self, serializer):

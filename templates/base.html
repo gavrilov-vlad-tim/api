@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+            Yatube
+        {% endblock %}
+    </title>
+
+    <style type='text/css'>
+        .container {
+            width: 50%;
+            margin: 0 25%;
+            border: 2px solid lightgrey;
+            border-radius: 10px;
+            padding: 20px;
+        }
+    </style>
+
+    <style type="text/css">
+        {% block style %}
+        {% endblock %}
+    </style>
+</head>
+<body>
+    <div class='container'>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

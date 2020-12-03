@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title%} Ytube | Регистрация {% endblock %}
+
+{% block style %}
+    .field {
+        margin-bottom: 20px;
+    }
+    
+    .error {
+        padding: 5px;
+        border-radius: 5px;
+        background-color: rgba(235, 64, 52, .5);
+        margin-bottom: 20px;
+    }
+{% endblock %}
+
+{% block content %}
+    <h1>Создайте аккаунт для доступа к API проекта Yatube</h1>
+    <div class='form'>
+        <!-- Вывод ошибок -->
+        {% if form.errors %}
+            {% for error, descriptions in form.errors.items %}
+                {% for description in descriptions %}
+                    <div class='error'>
+                        {{ description|escape }} 
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        <form method="post" action="{% url 'signup' %}">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class='field'> 
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                        {% if field.field.required %}
+                            *  
+                        {% endif %}
+                    </label>
+
+                    {{ field }}
+                    {% if field.help_text %}
+                        <p>
+                             {{ field.help_text|safe }}
+                        </p>
+                    {% endif %}
+            </div>
+                
+                {% endfor %}
+                <button type="submit">
+                    Зарегистрироваться
+                </button>
+        </form>
+        <p>
+            Символом * отмечены обязательные поля
+        </p>
+    </div>
+    <a href="{% url 'redoc' %}">Документация</a>
+{% endblock %}
